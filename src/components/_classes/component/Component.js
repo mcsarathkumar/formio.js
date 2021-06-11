@@ -2077,6 +2077,8 @@ export default class Component extends Element {
     settings = _.isEmpty(settings) ? {} : settings;
     settings.base64Upload = this.component.isUploadEnabled ? false : true;
     settings.mediaEmbed = { previewsInData: true };
+    // Remove AutoFormat on _ or * or __ or ** (Bold & Italic)
+    settings.removePlugins = ['Autoformat'];
     settings = _.merge(this.wysiwygDefault.ckeditor, _.get(this.options, 'editors.ckeditor.settings', {}), settings);
 
     if (this.component.isUploadEnabled) {

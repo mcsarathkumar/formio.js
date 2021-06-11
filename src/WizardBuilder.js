@@ -232,9 +232,18 @@ export default class WizardBuilder extends WebformBuilder {
   }
 
   getPageConfig(index, components = []) {
+    // Original Values
+    // return {
+    //   title: `Page ${index}`,
+    //   label: `Page ${index}`,
+    //   type: 'panel',
+    //   key: `page${index}`,
+    //   components,
+    // };
+    // Modified Value to German
     return {
-      title: `Page ${index}`,
-      label: `Page ${index}`,
+      title: `Seite ${index}`,
+      label: `Seite ${index}`,
       type: 'panel',
       key: `page${index}`,
       components,

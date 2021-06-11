@@ -1355,31 +1355,33 @@ export default class WebformBuilder extends Component {
 
         if (event.changed.component && (['label', 'title'].includes(event.changed.component.key))) {
           // Ensure this component has a key.
-          if (isNew) {
-            if (!event.data.keyModified) {
-              this.editForm.everyComponent(component => {
-                if (component.key === 'key' && component.parent.component.key === 'tabs') {
-                  component.setValue(_.camelCase(
-                    event.data.title ||
-                    event.data.label ||
-                    event.data.placeholder ||
-                    event.data.type
-                  ).replace(/^[0-9]*/, ''));
+          // Start is New property auto naming
+          // if (isNew) {
+          //   if (!event.data.keyModified) {
+          //     this.editForm.everyComponent(component => {
+          //       if (component.key === 'key' && component.parent.component.key === 'tabs') {
+          //         component.setValue(_.camelCase(
+          //           event.data.title ||
+          //           event.data.label ||
+          //           event.data.placeholder ||
+          //           event.data.type
+          //         ).replace(/^[0-9]*/, ''));
 
-                  return false;
-                }
-              });
-            }
+          //         return false;
+          //       }
+          //     });
+          //   }
 
-            if (this.form) {
-              let formComponents = this.findNamespaceRoot(parent.formioComponent.component);
-              // excluding component which key uniqueness is to be checked to prevent the comparing of the same keys
-              formComponents = formComponents.filter(comp => editFormOptions.editComponent.id !== comp.id);
+          //   if (this.form) {
+          //     let formComponents = this.findNamespaceRoot(parent.formioComponent.component);
+          //     // excluding component which key uniqueness is to be checked to prevent the comparing of the same keys
+          //     formComponents = formComponents.filter(comp => editFormOptions.editComponent.id !== comp.id);
 
-              // Set a unique key for this component.
-              BuilderUtils.uniquify(formComponents, event.data);
-            }
-          }
+          //     // Set a unique key for this component.
+          //     BuilderUtils.uniquify(formComponents, event.data);
+          //   }
+          // }
+          // Stop is New property auto naming
         }
 
         // Update the component.
